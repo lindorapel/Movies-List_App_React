@@ -74,7 +74,7 @@ const HeroCarousel = () => {
         className={
           active
             ? "active bg-red-600  rounded-full mx-1 mb-5"
-            : "inactive rounded-full mx-1 mb-5 bg-red-300"
+            : "inactive rounded-full mx-1 mb-5 bg-red-200"
         }
         onClick={() => onClick()}
       >

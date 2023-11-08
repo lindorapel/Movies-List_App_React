@@ -11,6 +11,9 @@ export default {
         xl: "5rem",
         "2xl": "6rem",
       },
+      zIndex: {
+        10000: "10000",
+      },
     },
   },
   plugins: [],
