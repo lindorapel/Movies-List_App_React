@@ -50,7 +50,7 @@ function SearchBar({ defaultKeyword, responsiveForm }) {
           name="search"
           className={`${responsiveForm} text-white w-full max-w-3xl py-1.5 pr-12 pl-4 border-0 outline-none rounded-md md:rounded-full bg-gray-900 bg-opacity-30  autofill:focus:bg-gray-900 autofill:focus:bg-opacity-10 focus:outline-none 
                                         focus:ring-2 
-                                         focus:ring-red-700 focus:ring-opacity-90 duration-500
+                                         focus:ring-red-700 focus:ring-opacity-90 duration-200
 `}
           type="text"
           placeholder="Search Movie ..."
