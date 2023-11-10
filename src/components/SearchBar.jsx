@@ -65,7 +65,7 @@ function SearchBar({ defaultKeyword, responsiveForm }) {
 
 SearchBar.propTypes = {
   defaultKeyword: PropTypes.string.isRequired,
-  responsiveForm: PropTypes.string.isRequired,
+  responsiveForm: PropTypes.string,
 };
 
 export default SearchBar;

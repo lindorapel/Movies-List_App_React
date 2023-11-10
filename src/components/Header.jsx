@@ -44,18 +44,14 @@ const Header = () => {
   useEffect(() => {
     const getSearchMovie = async () => {
       try {
-        //get token from local storage
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
         // Get the data from API with query and page variable
         const response = await axios.get(
           `${
             import.meta.env.VITE_API_URL
-          }/api/v1/search/movie?page=${page}&query=${query}`,
+          }/search/movie?query=${query}&page=${page}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
             },
           }
         );
@@ -120,15 +116,6 @@ const Header = () => {
                 navBg ? "bg-current duration-500" : ""
               }`}
             >
-              {/* <h1 className="text-white">naon eta</h1>
-          <button
-            className=" text-white"
-            onClick={() => {
-              setResponsive(false);
-            }}
-          >
-            <BiSearch className=" text-gray-300" size={26} />
-          </button> */}
               <nav
                 className={`container colors flex justify-between top-0 text-white w-full mx-auto py-3`}
               >

@@ -1,64 +1,60 @@
 import { useEffect, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import MovieItem from "../../components/MovieItem";
 
-function HasilPencarian() {
+function SearchResult() {
   const [searchParams] = useSearchParams();
   const [searchMovie, setSearchMovie] = useState([]);
 
   const query = searchParams.get("query");
-  const page = searchParams.get("page");
+  // const page = searchParams.get("page");
 
   useEffect(() => {
     const getSearchMovie = async () => {
       try {
-        //get token from local storage
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
         // Get the data from API with query and page variable
         const response = await axios.get(
-          `${
-            import.meta.env.VITE_API_URL
-          }/api/v1/search/movie?page=${page}&query=${query}`,
+          `${import.meta.env.VITE_API_URL}/search/movie?query=${query}&page=1`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
             },
           }
         );
         // Set state for the movie that have been searched
-        const { data } = response.data;
-        console.log(data.name);
-        setSearchMovie(data);
+        const { data } = response;
+        setSearchMovie(data?.results);
       } catch (error) {
-        // console.error(error);
+        console.error("Error fetching data:", error);
       }
     };
     getSearchMovie();
-  }, [query, page]);
+  }, [query]);
 
-  //   console.log(searchMovie);
+  console.log(searchMovie);
 
   return (
     <>
-      <div className="w-full bg-black">
-        <h1 className="text-white font-semibold text-3xl pt-28 ml-6 md:text-4xl md:ml-10 md:pt-28 mb-5">
-          {`Search = ${query}`}
-        </h1>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2">
+      <div className="container bg-black mx-auto ">
+        <div className="featured mb-5 pt-24">
+          <p className="text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
+            {`Search Movies = ${query}`}
+          </p>
+        </div>
+        <div className="grid justify-center items-center auto-rows-auto auto-cols-auto grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-auto">
           {searchMovie.map((search) => (
-            <div
-              key={search.id}
-              className="border-2 border-red-800 hover:border-white p-2 m-4 flex justify-center cursor-pointer"
-            >
-              <Link to={`/detail-film/${search.id}`}>
-                <img
-                  src={import.meta.env.VITE_BASEIMGURL + search.poster_path}
-                  alt="Poster_movie"
-                  className="flex justify-center items-center content-center opacity-60 hover:opacity-100 "
-                />
-              </Link>
+            <div key={search?.id}>
+              <MovieItem
+                id={search?.id}
+                imageURL={
+                  import.meta.env.VITE_API_IMAGE_URL + search?.poster_path
+                }
+                overview={search?.overview}
+                title={search?.title}
+                rating={search?.vote_average}
+                release={search?.release_date}
+              />
             </div>
           ))}
         </div>
@@ -67,4 +63,4 @@ function HasilPencarian() {
   );
 }
 
-export default HasilPencarian;
+export default SearchResult;
