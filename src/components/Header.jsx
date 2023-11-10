@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import axios from "axios";
+// import axios from "axios";
 import { BiSearch } from "react-icons/bi";
 import { BsArrowLeftShort } from "react-icons/bs";
 
 const Header = () => {
   const [searchParams] = useSearchParams();
-  const [setSearchMovie] = useState([]);
+
   const [navBg, setNavBg] = useState(false);
   const [responsive, setResponsive] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
 
   const query = searchParams.get("query");
-  const page = searchParams.get("page");
 
   // change navbg
   const changeNavBg = () => {
@@ -37,34 +36,6 @@ const Header = () => {
       window.removeEventListener("resize", handleWindowResize); // Clean up event listener
     };
   }, []);
-
-  //open search bar
-
-  //send title movie value to search bar
-  useEffect(() => {
-    const getSearchMovie = async () => {
-      try {
-        // Get the data from API with query and page variable
-        const response = await axios.get(
-          `${
-            import.meta.env.VITE_API_URL
-          }/search/movie?query=${query}&page=${page}`,
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
-            },
-          }
-        );
-        // Set state for the movie that have been searched
-        const { data } = response.data;
-        console.log(data.name);
-        setSearchMovie(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getSearchMovie();
-  }, [query, page]);
 
   return (
     <>
