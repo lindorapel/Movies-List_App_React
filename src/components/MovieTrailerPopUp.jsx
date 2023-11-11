@@ -18,7 +18,7 @@ const MovieTrailerPopUp = ({ trailer, closePopup }) => {
         Loading
       </button>
       <YouTube
-        className="z-50 p-16"
+        className="z-50"
         style={{ zIndex: "100" }}
         videoId={trailer}
         opts={opts}

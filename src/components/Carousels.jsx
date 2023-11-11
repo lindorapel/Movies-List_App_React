@@ -14,7 +14,7 @@ const Carousels = ({ id, imageURL, title, overview }) => {
         <h1 className="mb-1 text-white font-semibold text-4xl">{title}</h1>
         <p className="text-lg text-white font-normal">{overview}</p>
         <Link
-          className="flex text-lg font-medium text-white bg-red-700 hover:bg-red-800 rounded-sm w-max px-5 py-3"
+          className="flex text-lg font-medium text-white bg-red-600 bg-opacity-90 hover:bg-red-800 rounded-sm w-max px-5 py-3"
           to={`/details/${id}`}
         >
           More Details

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Jumbotron from "./Jumbotron";
+import MainDetailMovies from "./MainDetailMovies";
 
 const DetailMovies = () => {
   const [movieData, setMovieData] = useState(null);
@@ -52,18 +53,21 @@ const DetailMovies = () => {
     <>
       <div>
         {movieData ? (
-          <Jumbotron
-            imageURL={
-              import.meta.env.VITE_API_IMAGE_URL_ORIGIN +
-              movieData?.backdrop_path
-            }
-            handleShowTrailer={handleShowTrailer}
-            showPopup={showPopup}
-            closePopup={closePopup}
-            trailer={trailerUrl}
-            voteAverage={movieData?.vote_average}
-            voteCount={movieData?.vote_count}
-          />
+          <>
+            <Jumbotron
+              imageURL={
+                import.meta.env.VITE_API_IMAGE_URL_ORIGIN +
+                movieData?.backdrop_path
+              }
+              handleShowTrailer={handleShowTrailer}
+              showPopup={showPopup}
+              closePopup={closePopup}
+              trailer={trailerUrl}
+              voteAverage={movieData?.vote_average}
+              voteCount={movieData?.vote_count}
+            />
+            <MainDetailMovies />
+          </>
         ) : (
           <p className="text-white">loading</p>
         )}

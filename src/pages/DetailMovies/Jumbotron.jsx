@@ -17,7 +17,7 @@ const Jumbotron = ({
         <div className="absolute w-full bottom-0 z-50 mb-2">
           <div className="container flex justify-between mx-auto">
             <div className="flex text-white items-center gap-1.5">
-              <IoStarSharp className=" text-yellow-500 text-3xl" />
+              <IoStarSharp className=" text-yellow-400 text-3xl" />
               <div>
                 <p className="text-xl font-semibold">
                   {parseFloat(voteAverage).toFixed(1)} / 10
@@ -28,7 +28,7 @@ const Jumbotron = ({
 
             {!showPopup && (
               <button
-                className="text-white bg-gray-800 rounded-sm py-3 px-4"
+                className="text-white bg-black bg-opacity-60 hover:bg-opacity-30 hover:outline-2 hover:outline hover:outline-red-600 hover:text-red-500 rounded-sm py-3 px-4"
                 onClick={handleShowTrailer}
               >
                 Watch Trailer
@@ -37,12 +37,6 @@ const Jumbotron = ({
 
             {showPopup && trailer && (
               <MovieTrailerPopUp trailer={trailer} closePopup={closePopup} />
-              //   <button
-              //     className="text-white bg-gray-800 rounded-sm py-3 px-4"
-              //     onClick={handleShowTrailer}
-              //   >
-              //     Watch Trailer
-              //   </button>
             )}
           </div>
         </div>
