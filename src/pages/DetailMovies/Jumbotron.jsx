@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
 import { IoStarSharp } from "react-icons/io5";
+import MovieTrailerPopUp from "../../components/MovieTrailerPopUp";
 
-const Jumbotron = ({ imageURL, trailer, voteCount, voteAverage }) => {
+const Jumbotron = ({
+  imageURL,
+  trailer,
+  voteCount,
+  voteAverage,
+  showPopup,
+  handleShowTrailer,
+  closePopup,
+}) => {
   return (
     <>
       <div className=" relative">
-        <div className="absolute w-full bottom-0 z-50">
+        <div className="absolute w-full bottom-0 z-50 mb-2">
           <div className="container flex justify-between mx-auto">
             <div className="flex text-white items-center gap-1.5">
               <IoStarSharp className=" text-yellow-500 text-3xl" />
@@ -16,7 +25,25 @@ const Jumbotron = ({ imageURL, trailer, voteCount, voteAverage }) => {
                 <p className="text-sm">{voteCount} vote</p>
               </div>
             </div>
-            <button className="text-white">{trailer}</button>
+
+            {!showPopup && (
+              <button
+                className="text-white bg-gray-800 rounded-sm py-3 px-4"
+                onClick={handleShowTrailer}
+              >
+                Watch Trailer
+              </button>
+            )}
+
+            {showPopup && trailer && (
+              <MovieTrailerPopUp trailer={trailer} closePopup={closePopup} />
+              //   <button
+              //     className="text-white bg-gray-800 rounded-sm py-3 px-4"
+              //     onClick={handleShowTrailer}
+              //   >
+              //     Watch Trailer
+              //   </button>
+            )}
           </div>
         </div>
         <img
@@ -30,6 +57,9 @@ const Jumbotron = ({ imageURL, trailer, voteCount, voteAverage }) => {
 };
 
 Jumbotron.propTypes = {
+  showPopup: PropTypes.array.isRequired,
+  closePopup: PropTypes.func.isRequired,
+  handleShowTrailer: PropTypes.func.isRequired,
   imageURL: PropTypes.string,
   trailer: PropTypes.string,
   voteCount: PropTypes.number,

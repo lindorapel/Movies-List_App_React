@@ -7,6 +7,7 @@ const DetailMovies = () => {
   const [movieData, setMovieData] = useState(null);
   const [trailerUrl, setTrailerUrl] = useState("");
   const { movieId } = useParams();
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +39,15 @@ const DetailMovies = () => {
     fetchData();
   }, [movieId]);
 
+  const handleShowTrailer = (event) => {
+    event.preventDefault();
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <>
       <div>
@@ -47,12 +57,15 @@ const DetailMovies = () => {
               import.meta.env.VITE_API_IMAGE_URL_ORIGIN +
               movieData?.backdrop_path
             }
+            handleShowTrailer={handleShowTrailer}
+            showPopup={showPopup}
+            closePopup={closePopup}
             trailer={trailerUrl}
             voteAverage={movieData?.vote_average}
             voteCount={movieData?.vote_count}
           />
         ) : (
-          <p>loading</p>
+          <p className="text-white">loading</p>
         )}
       </div>
     </>
