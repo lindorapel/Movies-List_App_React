@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Jumbotron from "./Jumbotron";
 
 const DetailMovies = () => {
   const [movieData, setMovieData] = useState(null);
@@ -20,9 +21,11 @@ const DetailMovies = () => {
             },
           }
         );
+        console.log(response.data);
         setMovieData(response.data);
         const videos = response.data.videos.results;
         const trailer = videos.find((video) => video.type === "Trailer");
+        console.log(trailer);
 
         if (trailer) {
           setTrailerUrl(trailer.key);
@@ -35,7 +38,25 @@ const DetailMovies = () => {
     fetchData();
   }, [movieId]);
 
-  return <div>index</div>;
+  return (
+    <>
+      <div>
+        {movieData ? (
+          <Jumbotron
+            imageURL={
+              import.meta.env.VITE_API_IMAGE_URL_ORIGIN +
+              movieData?.backdrop_path
+            }
+            trailer={trailerUrl}
+            voteAverage={movieData?.vote_average}
+            voteCount={movieData?.vote_count}
+          />
+        ) : (
+          <p>loading</p>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default DetailMovies;
