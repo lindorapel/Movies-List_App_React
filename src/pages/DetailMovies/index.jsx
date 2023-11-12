@@ -66,7 +66,26 @@ const DetailMovies = () => {
               voteAverage={movieData?.vote_average}
               voteCount={movieData?.vote_count}
             />
-            <MainDetailMovies />
+            <MainDetailMovies
+              handleShowTrailer={handleShowTrailer}
+              imageURL={
+                import.meta.env.VITE_API_IMAGE_URL_ORIGIN +
+                movieData?.poster_path
+              }
+              title={movieData?.title}
+              releaseDate={movieData?.release_date}
+              runTime={movieData?.runtime}
+              genres={movieData?.genres}
+              overview={movieData?.overview}
+              // kanan
+              originalTitle={movieData?.original_title}
+              status={movieData?.status}
+              productionCountry={movieData?.production_countries}
+              productionCompanies={movieData?.production_companies}
+              spokenLanguages={movieData?.spoken_languages}
+              budget={movieData?.budget}
+              revenue={movieData?.revenue}
+            />
           </>
         ) : (
           <p className="text-white">loading</p>

@@ -66,10 +66,10 @@ const Header = () => {
               >
                 <BiSearch className=" text-gray-300" size={26} />
               </button>
-              <button className="border-2 border-solid border-red-600 border-opacity-90 rounded-md text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white font-medium py-1 px-3">
+              <button className="border-2 border-solid bg-black bg-opacity-30 border-red-600 border-opacity-90 rounded-sm text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white font-medium py-1 px-3">
                 Login
               </button>
-              <button className="bg-red-600 border-2 border-red-600 bg-opacity-90 hover:bg-black hover:bg-opacity-30 hover:border-2 hover:border-red-600 hover:text-red-500  rounded-md whitespace-nowrap py-1 px-3">
+              <button className="bg-red-600 border-2 border-red-600 bg-opacity-90 hover:bg-black hover:bg-opacity-30 hover:border-2 hover:border-red-600 hover:text-red-500  rounded-sm whitespace-nowrap py-1 px-3">
                 Sign Up
               </button>
             </div>
@@ -112,10 +112,10 @@ const Header = () => {
                   >
                     <BiSearch className=" text-gray-300 " size={26} />
                   </button>
-                  <button className="border-2 border-solid border-red-700 rounded-md text-red-700 hover:bg-red-700 hover:text-white font-bold py-1 px-3">
+                  <button className="border-2 border-solid bg-black bg-opacity-30 border-red-600 border-opacity-90 rounded-sm text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white font-medium py-1 px-3">
                     Login
                   </button>
-                  <button className="bg-red-700 hover:bg-black hover:bg-opacity-30 hover:outline hover:outline-red-600 hover:text-red-500 py-1 px-3 rounded-md whitespace-nowrap font-medium">
+                  <button className="bg-red-600 border-2 border-red-600 bg-opacity-90 hover:bg-black hover:bg-opacity-30 hover:border-2 hover:border-red-600 hover:text-red-500  rounded-sm whitespace-nowrap py-1 px-3">
                     Sign Up
                   </button>
                 </div>
