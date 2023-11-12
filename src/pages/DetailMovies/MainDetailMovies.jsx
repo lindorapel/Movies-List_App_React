@@ -123,11 +123,7 @@ const MainDetailMovies = ({
 MainDetailMovies.propTypes = {
   showPopup: PropTypes.func,
   closePopup: PropTypes.func,
-  trailer: PropTypes.arrayOf(
-    PropTypes.shape({
-      // Define the structure of objects in the 'trailer' array if needed
-    })
-  ),
+  trailer: PropTypes.arrayOf(PropTypes.shape({})),
   handleShowTrailer: PropTypes.func,
   imageURL: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -136,7 +132,6 @@ MainDetailMovies.propTypes = {
   genres: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      // Add more PropTypes if 'genres' objects have other properties
     })
   ).isRequired,
   overview: PropTypes.string.isRequired,
