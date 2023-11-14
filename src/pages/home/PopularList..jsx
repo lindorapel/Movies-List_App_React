@@ -4,7 +4,7 @@ import MovieItem from "../../components/MovieItem";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
-const PopularMovies = () => {
+const PopularList = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [errors, setErrors] = useState({
     isError: false,
@@ -66,7 +66,7 @@ const PopularMovies = () => {
           </p>
           <Link
             className="leading-none flex font-normal hover:text-red-600 text-white mt-2.5"
-            to="/populer-movies"
+            to="/popular-movies"
           >
             See More <BsArrowRight className=" ml-2 mt-0.5" />
           </Link>
@@ -94,4 +94,4 @@ const PopularMovies = () => {
   );
 };
 
-export default PopularMovies;
+export default PopularList;

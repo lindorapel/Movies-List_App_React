@@ -71,15 +71,15 @@ const MainDetailMovies = ({
       <div className="flex flex-col text-white gap-4 w-full md:w-64">
         <div>
           <h4 className="font-bold leading-none mb-0.5">Original Title</h4>
-          <p className="font-light">{originalTitle}</p>
+          <p className="font-normal">{originalTitle}</p>
         </div>
         <div>
           <h4 className="font-bold leading-none mb-0.5">Status</h4>
-          <p className="font-light">{status}</p>
+          <p className="font-normal">{status}</p>
         </div>
         <div>
           <h4 className="font-bold leading-none mb-0.5">Production Country</h4>
-          <ul className="font-light">
+          <ul className="font-normal">
             {productionCountry.map((country, index) => (
               <li className="list-disc ml-5" key={index}>
                 {country.name}
@@ -89,7 +89,7 @@ const MainDetailMovies = ({
         </div>
         <div>
           <h4 className="font-bold leading-none mb-0.5">Production Company</h4>
-          <ul className="font-light">
+          <ul className="font-normal">
             {productionCompanies.map((company, index) => (
               <li className="list-disc ml-5" key={index}>
                 {company.name}
@@ -99,7 +99,7 @@ const MainDetailMovies = ({
         </div>
         <div>
           <h4 className="font-bold leading-none mb-0.5">Spoken Language</h4>
-          <ul className="font-light">
+          <ul className="font-normal">
             {spokenLanguages.map((language, index) => (
               <li className="list-disc ml-5" key={index}>
                 {language.name}
@@ -109,11 +109,11 @@ const MainDetailMovies = ({
         </div>
         <div>
           <h4 className="font-bold leading-none mb-0.5">Budget</h4>
-          <p className="font-light">$. {budget.toLocaleString("en-US")}.00</p>
+          <p className="font-normal">$. {budget.toLocaleString("en-US")}.00</p>
         </div>
         <div>
           <h4 className="font-bold leading-none mb-0.5">Revenue</h4>
-          <p className="font-light">$. {revenue.toLocaleString("en-US")}.00</p>
+          <p className="font-normal">$. {revenue.toLocaleString("en-US")}.00</p>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import HeroCarousel from "./HeroCarousel";
-import PopularMovies from "./PopularMovies.";
+import PopularList from "./PopularList.";
 
 const Home = () => {
   return (
     <div className="">
       <HeroCarousel />
-      <PopularMovies />;
+      <PopularList />;
     </div>
   );
 };
