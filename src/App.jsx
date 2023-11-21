@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import DetailMovies from "./pages/DetailMovies";
 // import PopularMovies from "./pages/home/PopularMovies.";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import PopularMovies from "./pages/PopularMovies";
 import SearchResult from "./pages/SearchResult";
 
