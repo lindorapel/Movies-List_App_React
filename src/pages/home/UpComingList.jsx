@@ -4,7 +4,7 @@ import MovieItem from "../../components/MovieItem";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
-const PopularList = () => {
+const UpComingList = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [errors, setErrors] = useState({
     isError: false,
@@ -15,7 +15,7 @@ const PopularList = () => {
     const getPopularMovies = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/movie/popular`,
+          `${import.meta.env.VITE_API_URL}/movie/upcoming`,
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
@@ -62,11 +62,11 @@ const PopularList = () => {
       <div className="container mx-auto mt-8">
         <div className="featured flex justify-between mt-8 mb-4">
           <p className="uppercase text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
-            Popular <span className="text-red-600">Movies</span>
+            Upcoming <span className="text-red-600">Movies</span>
           </p>
           <Link
             className="leading-none flex font-normal hover:text-red-600 text-white mt-2.5"
-            to="/movie/popular"
+            to="/movie/upcoming"
           >
             See More <BsArrowRight className=" ml-2 mt-0.5" />
           </Link>
@@ -95,4 +95,4 @@ const PopularList = () => {
   );
 };
 
-export default PopularList;
+export default UpComingList;

@@ -60,13 +60,13 @@ const NowPlayingList = () => {
   return (
     <>
       <div className="container mx-auto mt-8">
-        <div className="featured flex justify-between mb-3">
-          <p className="text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
-            Now Playing Movies
+        <div className="featured flex justify-between mt-8 mb-4">
+          <p className=" uppercase text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
+            Now Playing <span className="text-red-600">Movies</span>
           </p>
           <Link
             className="leading-none flex font-normal hover:text-red-600 text-white mt-2.5"
-            to="/popular-movies"
+            to="/movie/now-playing"
           >
             See More <BsArrowRight className=" ml-2 mt-0.5" />
           </Link>
@@ -89,6 +89,7 @@ const NowPlayingList = () => {
             </>
           ))}
         </div>
+        <hr className="mt-2.5 border-slate-800" />
       </div>
     </>
   );

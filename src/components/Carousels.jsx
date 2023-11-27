@@ -15,7 +15,7 @@ const Carousels = ({ id, imageURL, title, overview }) => {
         <p className="text-lg text-white font-normal">{overview}</p>
         <Link
           className="flex text-lg font-medium text-white bg-red-600 bg-opacity-90 hover:bg-red-800 rounded-sm w-max px-5 py-3"
-          to={`/details/${id}`}
+          to={`/movie/${id}`}
         >
           More Details
           <MdKeyboardArrowRight className="ml-1.5" size={30} />
