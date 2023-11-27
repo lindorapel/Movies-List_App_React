@@ -1,4 +1,5 @@
 import HeroCarousel from "./HeroCarousel";
+import NowPlayingList from "./NowPlayingList";
 import PopularList from "./PopularList.";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div className="">
       <HeroCarousel />
       <PopularList />;
+      <NowPlayingList />
     </div>
   );
 };
