@@ -18,12 +18,16 @@ const responsive = {
     items: 7.5,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 640 },
     items: 4.5,
+  },
+  miniTablet: {
+    breakpoint: { max: 640, min: 464 },
+    items: 3.5,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1.5,
+    items: 2.5,
   },
 };
 
@@ -67,17 +71,17 @@ const RecomendationMovies = ({ movieId }) => {
     <div className="container mx-auto mt-8">
       <div className="featured flex justify-between mt-8 mb-4">
         <p className="uppercase text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
-          Recomendation <span className="text-red-600">Movies</span>
+          Recommendations <span className="text-red-600">Movies</span>
         </p>
         <Link
           className="leading-none flex font-normal hover:text-red-600 text-white mt-2.5"
-          to="/movie/similar"
+          to={`/movie/recommendations/${movieId}`}
         >
           See More <BsArrowRight className=" ml-2 mt-0.5" />
         </Link>
       </div>
       <Carousel className="container mx-auto p-0" responsive={responsive}>
-        {recomendationMovies.map((movie) => (
+        {recomendationMovies.slice(0, 10).map((movie) => (
           <div className="mx-2.5" key={movie?.id}>
             <MovieItem
               id={movie?.id}

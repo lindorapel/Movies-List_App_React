@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
 const NowPlayingList = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [errors, setErrors] = useState({
     isError: false,
     message: null,
   });
 
   useEffect(() => {
-    const getPopularMovies = async () => {
+    const getNowPlayingMovies = async () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/movie/now_playing`,
@@ -25,7 +25,7 @@ const NowPlayingList = () => {
 
         const { data } = response;
 
-        setPopularMovies(data?.results);
+        setNowPlayingMovies(data?.results);
         setErrors({ ...errors, isError: false });
       } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -47,13 +47,13 @@ const NowPlayingList = () => {
       }
     };
 
-    getPopularMovies();
+    getNowPlayingMovies();
   }, []);
 
   if (errors.isError) {
     return <h1>{errors.message}</h1>;
   }
-  if (popularMovies.length === 0) {
+  if (nowPlayingMovies.length === 0) {
     return <span>a</span>;
   }
 
@@ -72,7 +72,7 @@ const NowPlayingList = () => {
           </Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
-          {popularMovies.slice(0, 12).map((movie) => (
+          {nowPlayingMovies.slice(0, 12).map((movie) => (
             <>
               <div className="" key={movie?.id}>
                 <MovieItem

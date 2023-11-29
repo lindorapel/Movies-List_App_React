@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
 const TopRatedList = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [errors, setErrors] = useState({
     isError: false,
     message: null,
   });
 
   useEffect(() => {
-    const getPopularMovies = async () => {
+    const getTopRatedMovies = async () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/movie/top_rated`,
@@ -25,7 +25,7 @@ const TopRatedList = () => {
 
         const { data } = response;
 
-        setPopularMovies(data?.results);
+        setTopRatedMovies(data?.results);
         setErrors({ ...errors, isError: false });
       } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -47,13 +47,13 @@ const TopRatedList = () => {
       }
     };
 
-    getPopularMovies();
+    getTopRatedMovies();
   }, []);
 
   if (errors.isError) {
     return <h1>{errors.message}</h1>;
   }
-  if (popularMovies.length === 0) {
+  if (topRatedMovies.length === 0) {
     return <span>a</span>;
   }
 
@@ -72,7 +72,7 @@ const TopRatedList = () => {
           </Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
-          {popularMovies.slice(0, 12).map((movie) => (
+          {topRatedMovies.slice(0, 12).map((movie) => (
             <>
               <div className="" key={movie?.id}>
                 <MovieItem

@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import MovieItem from "../../components/MovieItem";
 import axios from "axios";
 
-const PopularMovies = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
+const UpComing = () => {
+  const [upComingMovies, setUpComingMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
@@ -11,12 +11,12 @@ const PopularMovies = () => {
     message: null,
   });
 
-  const fetchPopularMovies = async (page) => {
+  const fetchUpComingMovies = async (page) => {
     try {
       const response = await axios.get(
         `${
           import.meta.env.VITE_API_URL
-        }/movie/popular?language=en-US&page=${page}`,
+        }/movie/upcoming?language=en-US&page=${page}`,
         {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
@@ -56,9 +56,9 @@ const PopularMovies = () => {
 
     try {
       const nextPage = currentPage + 1;
-      const data = await fetchPopularMovies(nextPage);
+      const data = await fetchUpComingMovies(nextPage);
 
-      setPopularMovies((prevMovies) => [...prevMovies, ...data]);
+      setUpComingMovies((prevMovies) => [...prevMovies, ...data]);
       setCurrentPage(nextPage);
       setErrors({ isError: false });
     } catch (error) {
@@ -73,8 +73,8 @@ const PopularMovies = () => {
   useEffect(() => {
     const getPopularMovies = async () => {
       try {
-        const data = await fetchPopularMovies(1);
-        setPopularMovies(data);
+        const data = await fetchUpComingMovies(1);
+        setUpComingMovies(data);
         setErrors({ isError: false });
       } catch (error) {
         const errorMessage = handleError(error);
@@ -90,11 +90,11 @@ const PopularMovies = () => {
     <div className="container mx-auto pt-20">
       <div className="featured flex justify-between mb-3">
         <p className="text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
-          Popular Movies
+          Popular <span className="text-red-600">Movies</span>
         </p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
-        {popularMovies.map((movie) => (
+        {upComingMovies.map((movie) => (
           <>
             <div className="" key={movie?.id}>
               <MovieItem
@@ -124,4 +124,4 @@ const PopularMovies = () => {
   );
 };
 
-export default PopularMovies;
+export default UpComing;

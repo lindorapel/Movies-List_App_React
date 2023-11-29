@@ -76,13 +76,13 @@ const SimilarMovies = ({ movieId }) => {
         </p>
         <Link
           className="leading-none flex font-normal hover:text-red-600 text-white mt-2.5"
-          to="/movie/similar"
+          to={`/movie/similar/${movieId}`}
         >
           See More <BsArrowRight className=" ml-2 mt-0.5" />
         </Link>
       </div>
       <Carousel className="container mx-auto p-0" responsive={responsive}>
-        {similarMovies.map((movie) => (
+        {similarMovies.slice(0, 10).map((movie) => (
           <div className="mx-2.5" key={movie?.id}>
             <MovieItem
               id={movie?.id}

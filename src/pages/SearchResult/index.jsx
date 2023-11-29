@@ -39,7 +39,7 @@ function SearchResult() {
       <div className="container bg-black mx-auto ">
         <div className="featured mb-5 pt-24">
           <p className="text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
-            {`Search Movies = ${query}`}
+            Search Movies =<span className="text-red-600">{`${query}`}</span>
           </p>
         </div>
         <div className="grid justify-center items-center auto-rows-auto auto-cols-auto grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-auto">
