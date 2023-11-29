@@ -92,7 +92,7 @@ const Similar = () => {
     <div className="container mx-auto pt-20">
       <div className="featured flex justify-between mb-3">
         <p className="text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
-          Popular <span className="text-red-600">Movies</span>
+          Similar <span className="text-red-600">Movies</span>
         </p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
