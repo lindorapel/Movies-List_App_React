@@ -8,8 +8,8 @@ const MovieItem = ({ id, title, imageURL, release, rating }) => {
       <Link as={Link} to={`/movie/${id}`} className="card-img relative">
         <img
           src={imageURL}
-          alt=""
-          className="rounded-md group-hover:brightness-50"
+          alt="movie"
+          className="rounded-md group-hover:brightness-50 "
         />
         <p className="flex absolute top-0 rounded-md text-sm text-white px-1.5 py-0.5 mt-1.5 ml-1.5 bg-red-600">
           <BsFillStarFill className="mt-0.5 mr-1" />

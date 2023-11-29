@@ -46,7 +46,7 @@ const MainDetailMovies = ({
               {releaseDate} | {convertToTime(runTime)}
             </p>
           </div>
-          <div className="flex flex-row gap-2.5">
+          <div className="flex flex-row gap-2.5 flex-wrap">
             {genres.map((genre, index) => (
               <li
                 className="list-none rounded-md text-white bg-gray-600 bg-opacity-40 py-2 px-4"

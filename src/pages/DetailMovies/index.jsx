@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Jumbotron from "./Jumbotron";
 import MainDetailMovies from "./MainDetailMovies";
+import SimilarMovies from "./SimilarMovies";
 
 const DetailMovies = () => {
   const [movieData, setMovieData] = useState(null);
@@ -86,6 +87,7 @@ const DetailMovies = () => {
               budget={movieData?.budget}
               revenue={movieData?.revenue}
             />
+            <SimilarMovies movieId={movieId} />
           </>
         ) : (
           <p className="text-white">loading</p>
