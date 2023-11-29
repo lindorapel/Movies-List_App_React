@@ -18,29 +18,24 @@ const responsive = {
     items: 7.5,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 640 },
+    breakpoint: { max: 1024, min: 464 },
     items: 4.5,
-  },
-  miniTablet: {
-    breakpoint: { max: 640, min: 464 },
-    items: 3.5,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 2.5,
+    items: 1.5,
   },
 };
 
-const SimilarMovies = ({ movieId }) => {
-  // Menerima movieId sebagai prop
-  const [similarMovies, setSimilarMovies] = useState([]);
+const RecomendationMovies = ({ movieId }) => {
+  const [recomendationMovies, setRecomendationMovies] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchSimilarMovies = async () => {
+    const fetchRecomendationMovies = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/movie/${movieId}/similar`,
+          `${import.meta.env.VITE_API_URL}/movie/${movieId}/recommendations`,
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
@@ -49,7 +44,7 @@ const SimilarMovies = ({ movieId }) => {
         );
 
         const { data } = response;
-        setSimilarMovies(data?.results || []);
+        setRecomendationMovies(data?.results || []);
       } catch (error) {
         setError(
           error?.response?.data?.status_message ||
@@ -60,7 +55,7 @@ const SimilarMovies = ({ movieId }) => {
     };
 
     if (movieId) {
-      fetchSimilarMovies();
+      fetchRecomendationMovies();
     }
   }, [movieId]);
 
@@ -72,7 +67,7 @@ const SimilarMovies = ({ movieId }) => {
     <div className="container mx-auto mt-8">
       <div className="featured flex justify-between mt-8 mb-4">
         <p className="uppercase text-2xl font-semibold border-solid border-l-4 border-red-600 text-white pl-2.5 mb-2.5">
-          Similar <span className="text-red-600">Movies</span>
+          Recomendation <span className="text-red-600">Movies</span>
         </p>
         <Link
           className="leading-none flex font-normal hover:text-red-600 text-white mt-2.5"
@@ -82,7 +77,7 @@ const SimilarMovies = ({ movieId }) => {
         </Link>
       </div>
       <Carousel className="container mx-auto p-0" responsive={responsive}>
-        {similarMovies.map((movie) => (
+        {recomendationMovies.map((movie) => (
           <div className="mx-2.5" key={movie?.id}>
             <MovieItem
               id={movie?.id}
@@ -99,8 +94,8 @@ const SimilarMovies = ({ movieId }) => {
   );
 };
 
-SimilarMovies.propTypes = {
+RecomendationMovies.propTypes = {
   movieId: PropTypes.number.isRequired,
 };
 
-export default SimilarMovies;
+export default RecomendationMovies;

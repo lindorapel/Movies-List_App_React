@@ -4,6 +4,7 @@ import axios from "axios";
 import Jumbotron from "./Jumbotron";
 import MainDetailMovies from "./MainDetailMovies";
 import SimilarMovies from "./SimilarMovies";
+import RecomendationMovies from "./RecomendationMovies";
 
 const DetailMovies = () => {
   const [movieData, setMovieData] = useState(null);
@@ -88,6 +89,7 @@ const DetailMovies = () => {
               revenue={movieData?.revenue}
             />
             <SimilarMovies movieId={movieId} />
+            <RecomendationMovies movieId={movieId} />
           </>
         ) : (
           <p className="text-white">loading</p>
